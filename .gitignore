@@ -21,3 +21,7 @@ node_modules
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+src/components/header/macbook-code-potrait*
+src/components/header/black-laptop*
