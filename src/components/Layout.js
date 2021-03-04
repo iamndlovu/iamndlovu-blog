@@ -4,11 +4,11 @@ import Footer from './footer/Footer';
 
 import pageLayout from './Layout.module.scss'
 
-const layout = ({children}) => {
+const layout = ({children, headerData}) => {
   return (
     <div className={ pageLayout.Layout }>
       <div className={ pageLayout.container }>
-        <Header />
+        <Header headerData={headerData}  />
         { children }
       </div>
       <Footer />

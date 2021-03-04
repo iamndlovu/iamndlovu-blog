@@ -2,7 +2,10 @@ import React from 'react';
 
 import headerStyles from './Header.module.scss'
 
-const Header = () => {
+const Header = ({ headerData }) => {
+
+  const {paragraph1, subheading, paragraph2} = headerData;
+
   return (
     <header className={headerStyles.Header}>
       <div>
@@ -18,10 +21,10 @@ const Header = () => {
         </menu>
         {/*intro*/}
         <section>
-          <p>welcome to my</p>
-          <h3><span>100 Days Of Code</span> Blog</h3>
+          <p>{ paragraph1 }</p>
+          <h3><span>{subheading.yellow}</span> {subheading.white}</h3>
           <p>
-            This is where I document my coding journey as I complete the <a href="https://www.100daysofcode.com/" rel="noreferrer" target="_blank">#100DayOfCode</a> challenge. The goal is to write code every single day until the challenge is complete.
+            { paragraph2 }
           </p>
           <div>
             <i className={headerStyles.updown + " fa fa-arrow-down fa-2x"}></i>
