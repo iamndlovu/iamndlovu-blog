@@ -23,7 +23,9 @@ const Header = () => {
           <p>
             This is where I document my coding journey as I complete the <a href="https://www.100daysofcode.com/" rel="noreferrer" target="_blank">#100DayOfCode</a> challenge. The goal is to write code every single day until the challenge is complete.
           </p>
-          <i className="fa fa-arrow-down fa-2x"></i>
+          <div>
+            <i className={headerStyles.updown + " fa fa-arrow-down fa-2x"}></i>
+          </div>
         </section>
       </div>
     </header>

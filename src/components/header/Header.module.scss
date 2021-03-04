@@ -71,6 +71,28 @@
 					color: $yellow;
 				}
 			}
+
+			div {
+				max-height: 50px;
+				position: relative;
+				margin-top: 5rem;
+			}
 		}
+	}
+}
+
+.updown {
+	animation: MoveUpDown 2s linear infinite;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+
+@keyframes MoveUpDown {
+	0% {
+		bottom: 100%;
+	}
+	100% {
+		bottom: 0%;
 	}
 }
