@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet';
 import Layout from './components/Layout';
+import AllPosts from './components/posts/AllPosts';
 
 const headerData = {
   paragraph1: 'welcome to my',
@@ -16,7 +17,7 @@ function App() {
         <meta name="theme-color" content="#008f68" />
       </Helmet>
       <Layout headerData={headerData}>
-        <h1>Blog</h1>
+        <AllPosts />
       </Layout>
     </div>
   );
