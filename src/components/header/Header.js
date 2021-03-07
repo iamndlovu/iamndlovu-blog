@@ -1,6 +1,7 @@
 import React from 'react';
 
-import headerStyles from './Header.module.scss'
+import headerStyles from './Header.module.scss';
+import illustration from './undraw_Add_notes_re_ln36.svg'
 
 const Header = ({ headerData }) => {
 
@@ -21,13 +22,18 @@ const Header = ({ headerData }) => {
         </menu>
         {/*intro*/}
         <section>
-          <p>{ paragraph1 }</p>
-          <h3><span>{subheading.yellow}</span> {subheading.white}</h3>
-          <p>
-            { paragraph2 }
-          </p>
           <div>
-            <i className={headerStyles.updown + " fa fa-arrow-down fa-2x"}></i>
+            <p>{ paragraph1 }</p>
+            <h3><span>{subheading.yellow}</span> {subheading.white}</h3>
+            <p>
+              { paragraph2 }
+            </p>
+            <div>
+              <i className={headerStyles.updown + " fa fa-arrow-down fa-2x"}></i>
+            </div>
+          </div>
+          <div>
+            <img src={ illustration } />
           </div>
         </section>
       </div>

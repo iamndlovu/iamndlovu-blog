@@ -3,16 +3,16 @@ import Layout from './components/Layout';
 
 const headerData = {
   paragraph1: 'welcome to my',
-  subheading: {yellow: '100 Days Of Code', white: 'Blog'},
-  paragraph2: `This is where I document my coding journey as I complete the #100DayOfCode challenge. The goal is to write code every single day until the challenge is complete.`
+  subheading: {yellow: 'Code & Contracts', white: 'Blog'},
+  paragraph2: `This is where I document my life as a programmer, and journey in the world  of business.`
 }
 
 function App() {
   return (
     <div className="App">
       <Helmet>
-        <title>Blog - Pardon Ndlovu | Front-End Developer</title>
-        <meta name="description" content="Pardon Ndlovu's blog documenting web development journey" />
+        <title>Code &amp; Contracts - Pardon Ndlovu | Front-End Developer</title>
+        <meta name="description" content="Pardon Ndlovu's blog documenting web development and business journey" />
         <meta name="theme-color" content="#008f68" />
       </Helmet>
       <Layout headerData={headerData}>
