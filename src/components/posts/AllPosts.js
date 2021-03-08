@@ -1,32 +1,65 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import sanityClient from "../../client.js";
 
-import postsStyles from './AllPosts.module.scss';
-import fork from './fork.png';
+import postsStyles from "./AllPosts.module.scss";
 
 const AllPosts = () => {
-  const posts = [];
-  for(let i =0; i < 7; i++) {
-    posts.push(<article>
-      <div>
-        <img src={ fork } />
-      </div>
-      <section>
-        <h3>My First Blog Post</h3>
-        <p>This is a test post...</p>
-        <p>{new Date().toLocaleDateString()}</p>
-      </section>
-    </article>);
-  }
+	const [AllPostsData, setAllPosts] = useState(null);
 
-  return (
-    <main className={ postsStyles.AllPosts }>
-      <div>
-        {
-          posts
-        }
-      </div>
-    </main>
-  )
-}
+	useEffect(() => {
+		//IIFE to set all posts [state]
+		(async () => {
+			try {
+				const data = await sanityClient.fetch(
+					//GROQ
+					`*[_type == "post"] {
+					title,
+					slug,
+					mainImage {
+						asset -> {
+							_id,
+							url
+						}
+					},
+					body,
+					publishedAt
+				}`
+				);
+				setAllPosts(data);
+			} catch (err) {
+				console.error("el: " + err);
+			}
+		})(); //IIFE end
+	}, []);
 
-export default AllPosts
+	return (
+		<main className={postsStyles.AllPosts}>
+			<div>
+				{(AllPostsData &&
+					AllPostsData.map((post, index) => (
+						<article key={index}>
+							<div>
+								<img src={post.mainImage.asset.url} />
+							</div>
+							<section>
+								<h3>{post.title}</h3>
+								<p>{post.body[0].children[0].text.slice(0, 100) + "..."}</p>
+								<p>
+									{"Published: " +
+										new Date(post.publishedAt).toLocaleDateString()}
+								</p>
+							</section>
+						</article>
+					))) || (
+					<article>
+						<section>
+							<h3>Loading Posts ...</h3>
+						</section>
+					</article>
+				)}
+			</div>
+		</main>
+	);
+};
+
+export default AllPosts;
