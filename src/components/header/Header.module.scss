@@ -21,40 +21,6 @@
 		display: flex;
 		flex-direction: column;
 
-		menu {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-
-			h1 {
-				font-size: 1.15rem;
-				cursor: pointer;
-			}
-
-			a {
-				color: inherit;
-			}
-
-			nav ul {
-				list-style: none;
-				display: flex;
-
-				li {
-					cursor: pointer;
-					font-size: 1.15rem;
-					transition: all 0.5s ease-out;
-				}
-
-				li:last-child {
-					margin-left: 1rem;
-				}
-
-				li:hover {
-					text-decoration: underline;
-				}
-			}
-		}
-
 		section {
 			flex-grow: 1;
 			display: flex;

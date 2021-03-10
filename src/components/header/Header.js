@@ -1,4 +1,5 @@
 import React from "react";
+import Nav from "./Nav";
 
 import headerStyles from "./Header.module.scss";
 import illustration from "./undraw_Add_notes_re_ln36.svg";
@@ -10,33 +11,7 @@ const Header = ({ headerData }) => {
 		<header className={headerStyles.Header}>
 			<div>
 				{/* menu */}
-				<menu>
-					<h1>
-						<a href="/">Pardon Ndlovu's Blog</a>
-					</h1>
-					<nav>
-						<ul>
-							<li>
-								<a
-									href="https://iamndlovu.netlify.app/portfolio/"
-									rel="noreferrer"
-									target="_blank"
-								>
-									Portfolio
-								</a>
-							</li>
-							<li>
-								<a
-									href="https://iamndlovu.netlify.app/contact/"
-									rel="noreferrer"
-									target="_blank"
-								>
-									Contact
-								</a>
-							</li>
-						</ul>
-					</nav>
-				</menu>
+				<Nav />
 				{/*intro*/}
 				<section>
 					<div>
