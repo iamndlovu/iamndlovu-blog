@@ -20,7 +20,18 @@ const PostCategory = ({ id }) => {
 		})();
 	}, [id]);
 
-	return category ? <li>{category[0].title}</li> : <Fragment></Fragment>;
+	return category ? (
+		<li style={categoryStyle}>{category[0].title}</li>
+	) : (
+		<Fragment></Fragment>
+	);
+};
+
+const categoryStyle = {
+	marginRight: "9px",
+	background: "#777",
+	borderRadius: "5px",
+	padding: "6px 10px",
 };
 
 export default PostCategory;
