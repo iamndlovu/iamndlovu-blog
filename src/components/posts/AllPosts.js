@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import sanityClient from "../../client.js";
 
 import postsStyles from "./AllPosts.module.scss";
+import PostCategories from "./PostCategories.js";
 
 const AllPosts = () => {
 	const [AllPostsData, setAllPosts] = useState(null);
@@ -22,7 +24,8 @@ const AllPosts = () => {
 						}
 					},
 					body,
-					publishedAt
+					publishedAt,
+					categories
 				}`
 				);
 				setAllPosts(data);
@@ -35,21 +38,32 @@ const AllPosts = () => {
 	return (
 		<main className={postsStyles.AllPosts}>
 			<div>
+				{/*display posts if any are presesnt or show loading text*/}
 				{(AllPostsData &&
 					AllPostsData.map((post, index) => (
-						<article key={index}>
-							<div>
-								<img src={post.mainImage.asset.url} />
-							</div>
-							<section>
-								<h3>{post.title}</h3>
-								<p>{post.body[0].children[0].text.slice(0, 100) + "..."}</p>
-								<p>
-									{"Published: " +
-										new Date(post.publishedAt).toLocaleDateString()}
-								</p>
-							</section>
-						</article>
+						<Link
+							className={postsStyles.postink}
+							to={"/" + post.slug.current}
+							key={post.slug.current}
+						>
+							<article key={index}>
+								<div>
+									<img
+										src={post.mainImage.asset.url}
+										alt={post.title + "image"}
+									/>
+								</div>
+								<section>
+									<h3>{post.title}</h3>
+									<p>{post.body[0].children[0].text.slice(0, 100) + "..."}</p>
+									<PostCategories categoryRefs={post.categories} />
+									<p>
+										{"Published: " +
+											new Date(post.publishedAt).toLocaleDateString()}
+									</p>
+								</section>
+							</article>
+						</Link>
 					))) || (
 					<article>
 						<section>
