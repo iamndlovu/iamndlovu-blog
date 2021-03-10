@@ -1,10 +1,13 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import BlockContent from "@sanity/block-content-to-react";
+import { Helmet } from "react-helmet";
 import sanityClient from "../../client.js";
 import Layout from "./../Layout";
 import Nav from "../header/Nav";
-import { Helmet } from "react-helmet";
+import PostCategories from "./PostCategories";
+
+import postStyles from "./SinglePost.module.scss";
 
 const SinglePost = () => {
 	const [postData, setPostData] = useState(null);
@@ -17,6 +20,7 @@ const SinglePost = () => {
 					`*[_type == "post" && slug.current == $slug] {
 						title,
 						publishedAt,
+						categories,
 						mainImage {
 							asset -> {
 								_id,
@@ -43,15 +47,18 @@ const SinglePost = () => {
 					<Helmet>
 						<title>{`${postData.title} - Code & Contracts`}</title>
 					</Helmet>
-					<header>
+					<header className={postStyles.postHeader}>
 						<Nav />
-						<h2>{postData.title}</h2>
 						<section>
-							<div>By {postData.name}</div>
-							<div>{new Date(postData.publishedAt).toDateString()}</div>
+							<h2>{postData.title}</h2>
+							<div>
+								<span>By {postData.name}</span> |{" "}
+								<span>{new Date(postData.publishedAt).toDateString()}</span>
+								<PostCategories categoryRefs={postData.categories} />
+							</div>
 						</section>
 					</header>
-					<main>
+					<main className={postStyles.postBody}>
 						<div>
 							<img
 								src={postData.mainImage.asset.url}
@@ -67,7 +74,11 @@ const SinglePost = () => {
 						</article>
 					</main>
 				</Fragment>
-			)) || <di>Loading...</di>}
+			)) || (
+				<main className={postStyles.loading}>
+					<div>Loading...</div>
+				</main>
+			)}
 		</Layout>
 	);
 };

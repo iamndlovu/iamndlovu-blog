@@ -3,8 +3,6 @@
 .AllPosts {
 	div {
 		padding: 2rem $side-padding;
-		display: flex;
-		flex-wrap: wrap;
 
 		a {
 			color: inherit;
@@ -22,15 +20,12 @@
 		article {
 			background: $light-grey;
 			border-radius: 9px;
-			flex-basis: 600px;
-			flex-grow: 1;
-			flex-shrink: 1;
 			max-height: min-content;
 			display: flex;
 
 			div,
 			section {
-				max-height: 14rem;
+				max-height: 16rem;
 			}
 
 			section {

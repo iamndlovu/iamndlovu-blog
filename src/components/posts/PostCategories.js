@@ -15,7 +15,7 @@ const categoriesStyle = {
 	listStyle: "none",
 	display: "flex",
 	flexWrap: "wrap",
-	padding: "10px 0",
+	padding: "10px 0 0 0",
 };
 
 export default PostCategories;

@@ -29,6 +29,7 @@ const PostCategory = ({ id }) => {
 
 const categoryStyle = {
 	marginRight: "9px",
+	marginBottom: "10px",
 	background: "#777",
 	borderRadius: "5px",
 	padding: "6px 10px",
